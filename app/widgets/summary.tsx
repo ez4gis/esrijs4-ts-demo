@@ -6,7 +6,7 @@ import Widget = require("esri/widgets/Widget");
 import SummaryViewModel, { Stats } from "./viewmodels/summaryviewmodel";
 
 import { aliasOf, subclass, declared, property } from "esri/core/accessorSupport/decorators";
-import { renderable, join, jsxFactory } from "esri/widgets/support/widget";
+import { renderable, join, tsx } from "esri/widgets/support/widget";
 
 const CSS = {
   base: "esri-widget esri-component summary-widget",
@@ -58,14 +58,16 @@ class Summary extends declared(Widget) {
   viewModel: SummaryViewModel = new SummaryViewModel();
 
   render() {
+
     const max = roundToInt(allValues(this.stats), 10);
     const multi = 1;
     const chartHeight = { height: `${(max * multi)}px` };
     const styles = inlineStyle({ target: this.stats, multi });
+    const count = this.count;
     return (
       <div class={CSS.base}>
         <div class={CSS.container}>
-          <label>Facilities Summary ({this.count})</label>
+          <label>Facilities Summary ({count})</label>
           <hr />
           <div id="simpleChart" styles={chartHeight}>
             <div id="carcinogen" class={join(CSS.column, CSS.red)} styles={styles[0]}></div>

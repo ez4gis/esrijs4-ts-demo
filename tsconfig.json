@@ -2,11 +2,13 @@
   "compilerOptions": {
     "module": "amd",
     "noImplicitAny": true,
+    "noImplicitThis": true, /* Raise error on 'this' expressions with an implied 'any' type. */
     "outDir": "app",
     "removeComments": false,
-    "sourceMap": true,
     "jsx": "react",
-    "reactNamespace": "jsxFactory",
+    // "reactNamespace": "jsxFactory",
+    "jsxFactory": "tsx",
+    "sourceMap": true,
     "target": "es5",
     "moduleResolution": "node",
     "isolatedModules": false,
